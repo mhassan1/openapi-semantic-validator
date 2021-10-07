@@ -1,0 +1,50 @@
+{
+  "name": "openapi-semantic-validator",
+  "version": "0.1.0",
+  "description": "Perform semantic validation on an OpenAPI specification, just like Swagger Editor!",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": "https://github.com/mhassan1/openapi-semantic-validator",
+  "author": "mhassan1",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "src/**",
+    "lib/**"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "yarn build && jest"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.9",
+    "json-refs": "^3.0.4",
+    "querystring-browser": "^1.0.4",
+    "traverse": "^0.6.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "fs-extra": "^10.0.0",
+    "jest": "^27.2.4",
+    "klaw-sync": "^6.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
+}

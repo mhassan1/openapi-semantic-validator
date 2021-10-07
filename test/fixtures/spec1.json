@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Spec 1",
+    "version": "1.0.0",
+    "description": "Spec 1"
+  },
+  "servers": [
+    {
+      "url": "https://spec1.com"
+    }
+  ],
+  "paths": {
+    "/path1": {
+      "get": {
+        "summary": "Path 1",
+        "operationId": "path1",
+        "description": "Path 1",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

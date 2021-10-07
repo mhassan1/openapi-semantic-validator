@@ -1,0 +1,68 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Spec 2",
+    "version": "1.0.0",
+    "description": "Spec 2"
+  },
+  "servers": [
+    {
+      "url": "https://spec2.com"
+    }
+  ],
+  "paths": {
+    "/path1": {
+      "post": {
+        "summary": "Path 1",
+        "operationId": "path1",
+        "description": "Path 1",
+        "parameters": [
+          {
+            "name": "param1",
+            "in": "path",
+            "description": "param1",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/path2/{parameter2}": {
+      "get": {
+        "summary": "Path 2",
+        "operationId": "path1",
+        "description": "Path 2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Parameter2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter2": {
+        "name": "parameter2",
+        "in": "path",
+        "description": "Parameter 2",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

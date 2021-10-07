@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "swagger-editor": "swagger-api/swagger-editor#v3.18.2"
+  }
+}
