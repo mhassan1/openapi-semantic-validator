@@ -4,9 +4,12 @@ const selectors = require('../lib/selectors')
 const validators = require('../lib/validators')
 
 module.exports = async (spec) => {
+  // clone up front to prevent any incidental mutation
+  const clonedSpec = traverse(spec).clone()
+
   // use a dereferenced spec everywhere, for simplicity
   // validators may already expect it to be dereferenced
-  const dereferencedSpec = await $RefParser.dereference(spec)
+  const dereferencedSpec = await $RefParser.dereference(clonedSpec)
 
   const validateSelectors = Object.entries(selectors).reduce((acc, [selectorName, selector]) => {
     // unwind the different selector flavors in `selectors.js`

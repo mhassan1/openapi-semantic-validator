@@ -11,15 +11,33 @@
     }
   ],
   "paths": {
-    "/path1": {
+    "/path1/{parameter1}": {
       "get": {
         "summary": "Path 1",
         "operationId": "path1",
         "description": "Path 1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Parameter1"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter1": {
+        "name": "parameter1",
+        "in": "path",
+        "description": "Parameter 1",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
       }
     }

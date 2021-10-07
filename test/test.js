@@ -1,17 +1,18 @@
+const { readFileSync } = require('fs')
+const { join } = require('path')
 const { validateOpenapiSemantics } = require('..')
 
-const spec1 = require('./fixtures/spec1')
-const spec2 = require('./fixtures/spec2')
+const getSpec = (specName) => JSON.parse(readFileSync(join(__dirname, 'fixtures', specName) + '.json').toString())
 
 test('validate openapi semantics (success)', async () => {
-  await expect(validateOpenapiSemantics(spec1)).resolves.toBe(undefined)
+  await expect(validateOpenapiSemantics(getSpec('spec1'))).resolves.toBe(undefined)
 })
 
 test('validate openapi semantics (failure)', async () => {
   expect.assertions(2)
 
   try {
-    await validateOpenapiSemantics(spec2)
+    await validateOpenapiSemantics(getSpec('spec2'))
   } catch (err) {
     expect(err.message).toMatch('Semantic errors encountered!')
     expect(err.semanticErrors).toEqual([
@@ -42,4 +43,12 @@ test('validate openapi semantics (failure)', async () => {
       }
     ])
   }
+})
+
+test('ensure spec is not mutated', async () => {
+  const spec1 = getSpec('spec1')
+  const specBefore = JSON.stringify(spec1)
+  await validateOpenapiSemantics(spec1)
+  const specAfter = JSON.stringify(spec1)
+  expect(specBefore).toEqual(specAfter)
 })
