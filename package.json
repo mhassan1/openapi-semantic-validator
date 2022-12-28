@@ -32,7 +32,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "fs-extra": "^10.0.0",
     "jest": "^27.2.4",
-    "klaw-sync": "^6.0.0"
+    "klaw-sync": "^6.0.0",
+    "swagger-editor-git": "exec:./scripts/clone-swagger-editor.js"
   },
   "jest": {
     "collectCoverage": true,
@@ -47,5 +48,6 @@
         "statements": 100
       }
     }
-  }
+  },
+  "packageManager": "yarn@3.3.1"
 }

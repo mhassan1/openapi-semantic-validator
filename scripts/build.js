@@ -1,15 +1,9 @@
 const babel = require('@babel/core')
 const klawSync = require('klaw-sync')
-const { join, relative, dirname } = require('path')
+const { join, relative, dirname, resolve } = require('path')
 const { readFileSync, writeFileSync, ensureDirSync, removeSync } = require('fs-extra')
-const { execSync } = require('child_process')
 
-execSync('yarn', {
-  cwd: join(__dirname, '..', 'deps/swagger-editor'),
-  stdio: 'inherit'
-})
-
-const swaggerEditorPath = require('../deps/swagger-editor/swaggerEditorPath')
+const swaggerEditorPath = dirname(resolve(require.resolve('swagger-editor-git/package.json')))
 const libDir = join(__dirname, '..', 'lib')
 const swaggerEditor = 'swagger-editor'
 const swaggerEditorlibDir = join(libDir, swaggerEditor)
