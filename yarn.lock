@@ -5604,7 +5604,7 @@ __metadata:
 
 "swagger-editor-git@exec:./scripts/clone-swagger-editor.js::locator=openapi-semantic-validator%40workspace%3A.":
   version: 3.18.2
-  resolution: "swagger-editor-git@exec:./scripts/clone-swagger-editor.js#./scripts/clone-swagger-editor.js::hash=6f18c0&locator=openapi-semantic-validator%40workspace%3A."
+  resolution: "swagger-editor-git@exec:./scripts/clone-swagger-editor.js#./scripts/clone-swagger-editor.js::hash=b9f9e6&locator=openapi-semantic-validator%40workspace%3A."
   dependencies:
     ajv: ^5.2.2
     ajv-errors: ^1.0.1
@@ -5641,7 +5641,7 @@ __metadata:
     traverse: ^0.6.6
     validator: =13.6.0
     yaml-js: ^0.2.3
-  checksum: 9ccf7bb1ca38ab8fa2eb678e246d8da33d3cd6d428da8c549d54f5d228c1b4b59a75f6fb2baa108272ce9f1687a612435f6dd3f9c85fe5d33ecb0be233c919b1
+  checksum: a226410da82741e86f1dceb10b23cd7c7a7f91be74bda3c751af73c262b25d3dde0f165ecef5c538822c17e9e2c400dc0926276b2c95d965e9623ec1c40c15c5
   languageName: node
   linkType: hard
 
