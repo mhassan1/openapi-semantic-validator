@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.3.0] - 2023-09-19
+[0.3.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.2.1...v0.3.0
+
+- Move to TypeScript
+
 ## [0.2.1] - 2021-10-11
 [0.2.1]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.2.0...v0.2.1
 
