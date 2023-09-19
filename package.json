@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.js && rm -f index.d.ts && tsc",
-    "test": "yarn eslint '**/*.ts' && yarn build && jest"
+    "test": "eslint '**/*.ts' && yarn build && jest"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
