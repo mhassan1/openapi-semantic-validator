@@ -8,3 +8,8 @@ coverage
 !**/.yarn/sdks
 !**/.yarn/versions
 **/.pnp.*
+
+index.js
+index.d.ts
+src/**/*.js
+src/**/*.d.ts
