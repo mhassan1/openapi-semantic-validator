@@ -31,15 +31,40 @@ const validatorFiles = allFiles
   .filter(file => relative(validateSemanticPath, file).startsWith('validators'))
   .map(file => join(swaggerEditor, relative(swaggerEditorPath, file)))
 
-writeFileSync(join(libDir, 'validators.js'), `
+writeFileSync(
+  join(libDir, 'validators.js'),
+  `
 const validatorFiles = ${JSON.stringify(validatorFiles, null, 2)}
 const validators = {}
 for (const validatorFile of validatorFiles) {
   Object.assign(validators, require('./' + validatorFile))
 }
-module.exports = validators
-`)
+module.exports.validators = validators
+`
+)
 
-writeFileSync(join(libDir, 'selectors.js'), `
-module.exports = require('./swagger-editor/src/plugins/validate-semantic/selectors')
-`)
+writeFileSync(
+  join(libDir, 'validators.d.ts'),
+  `
+type Validator = (node?: unknown) => (system: unknown) => unknown[] | Promise<unknown[]>
+export const validators: Record<string, Validator>
+`
+)
+
+writeFileSync(
+  join(libDir, 'selectors.js'),
+  `
+module.exports.selectors = require('./swagger-editor/src/plugins/validate-semantic/selectors')
+`
+)
+
+writeFileSync(
+  join(libDir, 'selectors.d.ts'),
+  `
+type Selector =
+  | ((state: undefined, node: unknown) => unknown)
+  | ((state: undefined, node: unknown) => (system: unknown) => unknown)
+  | (() => (system: unknown) => unknown)
+export const selectors: Record<string, Selector>
+`
+)
