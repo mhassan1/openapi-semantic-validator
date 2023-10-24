@@ -7,3 +7,6 @@ node_js:
 os: linux
 dist: focal
 arch: arm64
+cache:
+  directories:
+    - $HOME/.yarn/berry/cache
