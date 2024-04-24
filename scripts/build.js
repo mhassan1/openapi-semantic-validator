@@ -68,3 +68,85 @@ type Selector =
 export const selectors: Record<string, Selector>
 `
 )
+
+const refsPath = join(
+  libDir,
+  'swagger-editor/src/plugins/validate-semantic/validators/2and3/refs.js'
+)
+const refs = readFileSync(refsPath).toString()
+writeFileSync(
+  refsPath,
+  refs.replace('require("json-refs")', 'require("../../../../../../json-refs")')
+)
+
+ensureDirSync(join(libDir, 'json-refs'))
+writeFileSync(
+  join(libDir, 'json-refs/index.js'),
+  `
+// copied from https://github.com/whitlockjc/json-refs/blob/3371c1ee0eaf027314ebc321ac311c586f966dd4/index.js
+
+var _ = require('lodash');
+
+var badPtrTokenRegex = /~(?:[^01]|$)/g;
+
+function pathFromPtr (ptr) {
+  try {
+    isPtr(ptr, true);
+  } catch (err) {
+    throw new Error('ptr must be a JSON Pointer: ' + err.message);
+  }
+
+  var segments = ptr.split('/');
+
+  // Remove the first segment
+  segments.shift();
+
+  return decodePath(segments);
+}
+
+function isPtr (ptr, throwWithDetails) {
+  var valid = true;
+  var firstChar;
+
+  try {
+    if (_.isString(ptr)) {
+      if (ptr !== '') {
+        firstChar = ptr.charAt(0);
+
+        if (['#', '/'].indexOf(firstChar) === -1) {
+          throw new Error('ptr must start with a / or #/');
+        } else if (firstChar === '#' && ptr !== '#' && ptr.charAt(1) !== '/') {
+          throw new Error('ptr must start with a / or #/');
+        } else if (ptr.match(badPtrTokenRegex)) {
+          throw new Error('ptr has invalid token(s)');
+        }
+      }
+    } else {
+      throw new Error('ptr is not a String');
+    }
+  } catch (err) {
+    if (throwWithDetails === true) {
+      throw err;
+    }
+
+    valid = false;
+  }
+
+  return valid;
+}
+
+function decodePath (path) {
+  if (!_.isArray(path)) {
+    throw new TypeError('path must be an array');
+  }
+
+  return path.map(function (seg) {
+    if (!_.isString(seg)) {
+      seg = JSON.stringify(seg);
+    }
+
+    return seg.replace(/~1/g, '/').replace(/~0/g, '~');
+  });
+}
+`
+)

@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.4.0] - 2024-04-24
+[0.4.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.3.0...v0.4.0
+
+- Remove dependency on `json-refs` to remove transitive dependency on `formidable`
+
 ## [0.3.0] - 2023-09-19
 [0.3.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.2.1...v0.3.0
 

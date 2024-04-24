@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
-    "json-refs": "^3.0.4",
     "lodash": "^4.17.21",
     "querystring-browser": "^1.0.4",
     "traverse": "^0.6.6"
