@@ -75,6 +75,7 @@ try {
 
 ```bash
 yarn
+yarn build
 yarn test
 ```
 
