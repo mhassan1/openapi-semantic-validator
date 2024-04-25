@@ -44,6 +44,9 @@
     "ts-jest": "^29.1.1",
     "typescript": "~5.1.6"
   },
+  "resolutions": {
+    "opencollective/minimist": "^1.2.8"
+  },
   "jest": {
     "preset": "ts-jest",
     "collectCoverage": true,
