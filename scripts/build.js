@@ -70,8 +70,8 @@ export const selectors: Record<string, Selector>
 )
 
 const refsPath = join(
-  libDir,
-  'swagger-editor/src/plugins/validate-semantic/validators/2and3/refs.js'
+  swaggerEditorlibDir,
+  'src/plugins/validate-semantic/validators/2and3/refs.js'
 )
 const refs = readFileSync(refsPath).toString()
 writeFileSync(
