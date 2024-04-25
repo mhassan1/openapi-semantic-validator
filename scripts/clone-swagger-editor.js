@@ -3,7 +3,9 @@ const { cpSync, writeFileSync } = require('fs')
 
 const { tempDir, buildDir } = execEnv
 
-const version = '3.18.2'
+const version = require(`${process.env.PROJECT_CWD}/package`).devDependencies[
+  'swagger-editor'
+]
 
 execFileSync('git', [
   'clone', 'https://github.com/swagger-api/swagger-editor.git',
