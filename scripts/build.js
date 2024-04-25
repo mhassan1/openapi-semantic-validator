@@ -14,6 +14,17 @@ const validateSemanticPath = join(
   'validate-semantic'
 )
 
+const swaggerEditorVersionActual =
+  require(`${swaggerEditorPath}/package`).version
+const swaggerEditorVersionExpected =
+  require('../package').devDependencies[swaggerEditor]
+
+if (swaggerEditorVersionActual !== swaggerEditorVersionExpected) {
+  throw new Error(
+    'Mismatched `swagger-editor` version; the version in `clone-swagger-editor.js` must match `package.json`'
+  )
+}
+
 const allFiles = klawSync(validateSemanticPath, { nodir: true })
   .map(({ path }) => path)
   .filter((path) => path.endsWith('.js'))
