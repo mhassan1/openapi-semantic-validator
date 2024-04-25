@@ -6,30 +6,37 @@ const { readFileSync, writeFileSync, ensureDirSync, removeSync } = require('fs-e
 const swaggerEditorPath = dirname(resolve(require.resolve('swagger-editor-git/package.json')))
 const libDir = join(__dirname, '..', 'lib')
 const swaggerEditor = 'swagger-editor'
-const swaggerEditorlibDir = join(libDir, swaggerEditor)
-const validateSemanticPath = join(swaggerEditorPath, 'src', 'plugins', 'validate-semantic')
+const swaggerEditorLibDir = join(libDir, swaggerEditor)
+const validateSemanticPath = join(
+  swaggerEditorPath,
+  'src',
+  'plugins',
+  'validate-semantic'
+)
 
 const allFiles = klawSync(validateSemanticPath, { nodir: true })
   .map(({ path }) => path)
-  .filter(path => path.endsWith('.js'))
+  .filter((path) => path.endsWith('.js'))
   .concat(join(swaggerEditorPath, 'src', 'plugins', 'refs-util.js'))
 
 removeSync(libDir)
 ensureDirSync(libDir)
-ensureDirSync(swaggerEditorlibDir)
+ensureDirSync(swaggerEditorLibDir)
 
 for (const file of allFiles) {
   const relativeFile = relative(swaggerEditorPath, file)
   const { code: transformedCode } = babel.transformSync(readFileSync(file), {
     plugins: ['@babel/plugin-transform-modules-commonjs']
   })
-  ensureDirSync(join(swaggerEditorlibDir, dirname(relativeFile)))
-  writeFileSync(join(swaggerEditorlibDir, relativeFile), transformedCode)
+  ensureDirSync(join(swaggerEditorLibDir, dirname(relativeFile)))
+  writeFileSync(join(swaggerEditorLibDir, relativeFile), transformedCode)
 }
 
 const validatorFiles = allFiles
-  .filter(file => relative(validateSemanticPath, file).startsWith('validators'))
-  .map(file => join(swaggerEditor, relative(swaggerEditorPath, file)))
+  .filter((file) =>
+    relative(validateSemanticPath, file).startsWith('validators')
+  )
+  .map((file) => join(swaggerEditor, relative(swaggerEditorPath, file)))
 
 writeFileSync(
   join(libDir, 'validators.js'),
@@ -70,7 +77,7 @@ export const selectors: Record<string, Selector>
 )
 
 const refsPath = join(
-  swaggerEditorlibDir,
+  swaggerEditorLibDir,
   'src/plugins/validate-semantic/validators/2and3/refs.js'
 )
 const refs = readFileSync(refsPath).toString()
