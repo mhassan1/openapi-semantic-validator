@@ -39,13 +39,15 @@
     "fs-extra": "^11.1.0",
     "jest": "^29.3.1",
     "klaw-sync": "^6.0.0",
-    "swagger-editor": "3.18.2",
     "swagger-editor-git": "exec:./scripts/clone-swagger-editor.js",
     "ts-jest": "^29.1.1",
     "typescript": "~5.1.6"
   },
   "resolutions": {
     "opencollective/minimist": "^1.2.8"
+  },
+  "_bundled": {
+    "swagger-editor": "3.18.2"
   },
   "jest": {
     "preset": "ts-jest",

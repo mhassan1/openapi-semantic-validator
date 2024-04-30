@@ -17,7 +17,7 @@ const validateSemanticPath = join(
 const swaggerEditorVersionActual =
   require(`${swaggerEditorPath}/package`).version
 const swaggerEditorVersionExpected =
-  require('../package').devDependencies[swaggerEditor]
+  require('../package')._bundled[swaggerEditor]
 
 if (swaggerEditorVersionActual !== swaggerEditorVersionExpected) {
   throw new Error(
