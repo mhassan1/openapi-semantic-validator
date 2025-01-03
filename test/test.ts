@@ -35,22 +35,16 @@ test('validate openapi semantics (failure)', async () => {
         level: 'error'
       },
       {
-        level: 'error',
+        level: 'warning',
         message:
-          "Path parameters must have 'required: true'. You can always create another path/operation without this parameter to get the same behaviour.",
-        path: ['paths', '/path1', 'post', 'parameters', '0']
+          'Header parameters named "Authorization" are ignored. Use the `securitySchemes` and `security` sections instead to define authorization.',
+        path: ['paths', '/path2/{parameter2}', 'get', 'parameters', '1', 'name']
       },
       {
-        level: 'error',
+        level: 'warning',
         message:
-          "Path parameters must have 'required: true'. You can always create another path/operation without this parameter to get the same behaviour.",
-        path: ['paths', '/path2/{parameter2}', 'get', 'parameters', '0']
-      },
-      {
-        level: 'error',
-        message:
-          "Path parameters must have 'required: true'. You can always create another path/operation without this parameter to get the same behaviour.",
-        path: ['components', 'parameters', 'Parameter2']
+          'Header parameters named "Authorization" are ignored. Use the `securitySchemes` and `security` sections instead to define authorization.',
+        path: ['components', 'parameters', 'Authorization', 'name']
       }
     ])
   }

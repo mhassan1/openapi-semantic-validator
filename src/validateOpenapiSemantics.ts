@@ -83,7 +83,14 @@ export const validateOpenapiSemantics = async (
   const semanticErrors = []
 
   for (const [validatorName, validator] of Object.entries(validators)) {
-    if (!validatorName.startsWith('validate')) continue
+    if (
+      // only include validators that are related to oas3
+      // this matches the logic in the `validators` function in `selectors.js`
+      !validatorName.startsWith('validate2And3') &&
+      !validatorName.startsWith('validateOAS3')
+    ) {
+      continue
+    }
     semanticErrors.push(...(await validator()(system)))
   }
 

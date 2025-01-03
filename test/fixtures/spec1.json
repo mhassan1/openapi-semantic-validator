@@ -10,6 +10,11 @@
       "url": "https://spec1.com"
     }
   ],
+  "security": [
+    {
+      "my-oauth": ["read"]
+    }
+  ],
   "paths": {
     "/path1/{parameter1}": {
       "get": {
@@ -38,6 +43,19 @@
         "required": true,
         "schema": {
           "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "my-oauth": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://spec1.com/token",
+            "scopes": {
+              "read": "read"
+            }
+          }
         }
       }
     }

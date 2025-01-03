@@ -24,7 +24,7 @@
             "schema": {
               "type": "string"
             },
-            "required": false
+            "required": true
           }
         ],
         "responses": {
@@ -42,6 +42,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Parameter2"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
           }
         ],
         "responses": {
@@ -58,7 +61,16 @@
         "name": "parameter2",
         "in": "path",
         "description": "Parameter 2",
-        "required": false,
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Authorization": {
+        "name": "authorization",
+        "in": "header",
+        "description": "Authorization",
+        "required": true,
         "schema": {
           "type": "string"
         }
