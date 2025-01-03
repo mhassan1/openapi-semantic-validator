@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.0] - 2025-01-02
+[0.5.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.4.0...v0.5.0
+
+- Only execute validators related to OAS 3
+
 ## [0.4.0] - 2024-04-24
 [0.4.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.3.0...v0.4.0
 
