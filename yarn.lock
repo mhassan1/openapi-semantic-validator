@@ -5304,9 +5304,9 @@ __metadata:
   linkType: hard
 
 "swagger-editor-git@exec:./scripts/clone-swagger-editor.js::locator=openapi-semantic-validator%40workspace%3A.":
-  version: 3.18.2
-  resolution: "swagger-editor-git@exec:./scripts/clone-swagger-editor.js#./scripts/clone-swagger-editor.js::hash=3dc40e&locator=openapi-semantic-validator%40workspace%3A."
-  checksum: 10c0/b408b516c4c7828abf226380430d73ade05fc5ee315e90be1e3d8f449f98075f6700fbeb3838ef916ef8bfcb991905970c402e537314e748478b7f8bcc79ff75
+  version: 4.14.6
+  resolution: "swagger-editor-git@exec:./scripts/clone-swagger-editor.js#./scripts/clone-swagger-editor.js::hash=84c840&locator=openapi-semantic-validator%40workspace%3A."
+  checksum: 10c0/f21fde314e76dc9dc1c157614dd1f946683fad8347c6465dbd96923648bfbbd1e7f17a43dd199cf568a913bae17fb0294f8477dbe19bfe78a47be99c48e523a2
   languageName: node
   linkType: hard
 

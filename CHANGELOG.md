@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.6.0] - 2025-07-01
+[0.6.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.5.0...v0.6.0
+
+- Move to `swagger-editor` v4
+
 ## [0.5.0] - 2025-01-02
 [0.5.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.4.0...v0.5.0
 
