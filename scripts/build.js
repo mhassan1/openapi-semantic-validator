@@ -21,7 +21,7 @@ const swaggerEditorVersionExpected =
 
 if (swaggerEditorVersionActual !== swaggerEditorVersionExpected) {
   throw new Error(
-    'Mismatched `swagger-editor` version; the version in `clone-swagger-editor.js` must match `package.json`'
+    'Mismatched `swagger-editor` version; the version in `clone-swagger-editor.js` must match `_bundled.swagger-editor` in `package.json`'
   )
 }
 
