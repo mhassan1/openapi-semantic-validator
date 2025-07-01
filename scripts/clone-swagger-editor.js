@@ -3,7 +3,7 @@ const { cpSync, writeFileSync } = require('fs')
 
 const { tempDir, buildDir } = execEnv
 
-// this must always match the version of `swagger-editor` in `package.json`
+// this must always match the version of `_bundled.swagger-editor` in `package.json`
 const version = '3.18.2'
 
 execFileSync('git', [
