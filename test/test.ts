@@ -29,10 +29,10 @@ test('validate openapi semantics (failure)', async () => {
         path: ['paths', '/path2/{parameter2}', 'get', 'operationId']
       },
       {
+        level: 'error',
         message:
           'Path parameter "param1" must have the corresponding {param1} segment in the "/path1" path',
-        path: ['paths', '/path1', 'post', 'parameters', '0', 'name'],
-        level: 'error'
+        path: ['paths', '/path1', 'post', 'parameters', '0', 'name']
       },
       {
         level: 'warning',
