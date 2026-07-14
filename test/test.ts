@@ -25,26 +25,22 @@ test('validate openapi semantics (failure)', async () => {
     expect((err as ErrorWithSemanticErrors).semanticErrors).toEqual([
       {
         level: 'error',
-        message: 'Operations must have unique operationIds.',
-        path: ['paths', '/path2/{parameter2}', 'get', 'operationId']
+        message: 'operationId\' must be unique among all operations'
       },
       {
         level: 'error',
         message:
-          'Path parameter "param1" must have the corresponding {param1} segment in the "/path1" path',
-        path: ['paths', '/path1', 'post', 'parameters', '0', 'name']
+          'parameter is not defined within path template'
+      },
+      {
+        level: 'error',
+        message:
+          'operationId\' must be unique among all operations'
       },
       {
         level: 'warning',
         message:
-          'Header parameters named "Authorization" are ignored. Use the `securitySchemes` and `security` sections instead to define authorization.',
-        path: ['paths', '/path2/{parameter2}', 'get', 'parameters', '1', 'name']
-      },
-      {
-        level: 'warning',
-        message:
-          'Header parameters named "Authorization" are ignored. Use the `securitySchemes` and `security` sections instead to define authorization.',
-        path: ['components', 'parameters', 'Authorization', 'name']
+          'Header Parameter named "Authorization" is ignored. Use the "securitySchemes" and "security" sections instead to define authorization'
       }
     ])
   }

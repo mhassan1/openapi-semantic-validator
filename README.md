@@ -29,8 +29,8 @@ NOTE: This package does not perform structural validation; use [swagger-parser](
 
 #### Semantic
 
-* Operations must have unique operationIds
-* Path parameter "X" must have the corresponding {X} segment in the "Y" path
+* operationId' must be unique among all operations
+* parameter is not defined within path template
 * etc.
 
 ## Installation
@@ -69,7 +69,6 @@ try {
           this is an array of objects containing:
             - `level: 'error' | 'warning'`
             - `message: string`
-            - `path: string[]`
 
 ## Development
 
