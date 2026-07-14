@@ -1,4 +1,4 @@
-import { doValidation } from '../lib/swagger-editor'
+import { doValidation } from '../lib/validate'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type OpenapiSpec = any

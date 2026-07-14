@@ -32,9 +32,9 @@ module.exports = apidomWorker
 )
 
 writeFileSync(
-  join(swaggerEditorLibDir, 'index.js'),
+  join(libDir, 'validate.js'),
   `
-const { ApiDOMWorker } = require('./apidom.worker')
+const { ApiDOMWorker } = require('./swagger-editor/apidom.worker')
 
 module.exports.doValidation = async content => {
   const worker = new ApiDOMWorker({
@@ -59,7 +59,7 @@ module.exports.doValidation = async content => {
 )
 
 writeFileSync(
-  join(swaggerEditorLibDir, 'index.d.ts'),
+  join(libDir, 'validate.d.ts'),
   `
 export type Diagnostic = {
   message: string
