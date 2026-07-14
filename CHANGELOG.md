@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0] - 2026-07-14
+[0.7.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.6.0...v0.7.0
+
+- Move to `swagger-editor` v5
+  - Text in `message` field has changed for most error types
+  - `path` field has been removed
+  - Minimum Node.js version is 22
+
 ## [0.6.0] - 2025-07-01
 [0.6.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.5.0...v0.6.0
 
