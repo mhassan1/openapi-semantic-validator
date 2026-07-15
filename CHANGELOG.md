@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0] - 2026-07-15
+[0.8.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.7.1...v0.8.0
+
+- Clarify that package performs both structural and semantic validation
+  - Rename `validateOpenapiSemantics` to `validateOpenapiSpec`
+  - Update `validateOpenapiSpec` signature to accept `string`, only
+  - Rename `semanticErrors` to `validationErrors`
+
 ## [0.7.1] - 2026-07-15
 [0.7.1]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.7.0...v0.7.1
 

@@ -1,28 +1,34 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { validateOpenapiSemantics, ErrorWithSemanticErrors } from '..'
+import { validateOpenapiSpec, ErrorWithValidationErrors } from '..'
 
 const getSpec = (specName: string) =>
-  JSON.parse(
-    readFileSync(join(__dirname, 'fixtures', specName) + '.json').toString()
-  )
+  readFileSync(join(__dirname, 'fixtures', specName) + '.json').toString()
 
-test('validate openapi semantics (success)', async () => {
-  await expect(validateOpenapiSemantics(getSpec('spec1'))).resolves.toBe(
+test('validate openapi spec (success)', async () => {
+  await expect(validateOpenapiSpec(getSpec('spec1'))).resolves.toBe(
     undefined
   )
 })
 
-test('validate openapi semantics (failure)', async () => {
+test('validate openapi spec (failure)', async () => {
   expect.assertions(2)
 
   try {
-    await validateOpenapiSemantics(getSpec('spec2'))
+    await validateOpenapiSpec(getSpec('spec2'))
   } catch (err) {
-    expect((err as ErrorWithSemanticErrors).message).toMatch(
-      'Semantic errors encountered!'
+    expect((err as ErrorWithValidationErrors).message).toMatch(
+      'Validation errors encountered!'
     )
-    expect((err as ErrorWithSemanticErrors).semanticErrors).toEqual([
+    expect((err as ErrorWithValidationErrors).validationErrors).toEqual([
+      {
+        level: 'error',
+        message: 'should always have a \'version\''
+      },
+      {
+        level: 'error',
+        message: 'Object includes not allowed fields'
+      },
       {
         level: 'error',
         message: 'operationId\' must be unique among all operations'
@@ -44,12 +50,4 @@ test('validate openapi semantics (failure)', async () => {
       }
     ])
   }
-})
-
-test('ensure spec is not mutated', async () => {
-  const spec1 = getSpec('spec1')
-  const specBefore = JSON.stringify(spec1)
-  await validateOpenapiSemantics(spec1)
-  const specAfter = JSON.stringify(spec1)
-  expect(specBefore).toEqual(specAfter)
 })
