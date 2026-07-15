@@ -6,7 +6,6 @@ export type OpenapiSpec = any
 export type SemanticError = {
   level: 'error' | 'warning'
   message: string
-  path: string[]
 }
 export type SemanticErrors = SemanticError[]
 export type ErrorWithSemanticErrors = Error & {

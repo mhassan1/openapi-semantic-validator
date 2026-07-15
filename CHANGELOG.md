@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7.1] - 2026-07-15
+[0.7.1]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.7.0...v0.7.1
+
+- Remove `path` from type
+
 ## [0.7.0] - 2026-07-14
 [0.7.0]: https://github.com/mhassan1/openapi-semantic-validator/compare/v0.6.0...v0.7.0
 
