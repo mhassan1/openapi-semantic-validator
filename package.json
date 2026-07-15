@@ -1,6 +1,6 @@
 {
   "name": "openapi-semantic-validator",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Perform structural and semantic validation on an OpenAPI specification, just like Swagger Editor!",
   "main": "index.js",
   "types": "index.d.ts",
