@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Spec 2",
-    "version": "1.0.0",
+    "versionX": "1.0.0",
     "description": "Spec 2"
   },
   "servers": [

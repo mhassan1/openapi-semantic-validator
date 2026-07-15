@@ -1,1 +1,1 @@
-export * from './src/validateOpenapiSemantics'
+export * from './src/validateOpenapiSpec'

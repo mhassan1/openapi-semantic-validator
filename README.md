@@ -1,30 +1,19 @@
 # OpenAPI Semantic Validator
 
-Perform semantic validation on an OpenAPI specification, just like Swagger Editor!
+Perform structural and semantic validation on an OpenAPI specification, just like Swagger Editor!
 
 ## Purpose
 
 [Swagger Editor](https://editor.swagger.io/) performs both structural (schema) and semantic (spec) validation of OpenAPI specifications.
-While [swagger-parser](https://www.npmjs.com/package/@apidevtools/swagger-parser) performs structural validation,
-it does not (yet) support semantic validation:
 
-> Note: Validating against the OpenAPI 3.0 Specification is not (yet) supported. For now, the validate.spec option is ignored if your API is in OpenAPI 3.0 format.
->
-> -- [swagger-parser docs](https://apitools.dev/swagger-parser/docs/options.html#validate-options)
-
-Once [swagger-parser](https://www.npmjs.com/package/@apidevtools/swagger-parser) adds support for semantic validation, this package will be deprecated.
-
-This package performs semantic validation by executing the validators from the [swagger-editor](https://www.npmjs.com/package/swagger-editor) package.
-It does not parse OpenAPI specifications or perform structural validation; use [swagger-parser](https://www.npmjs.com/package/@apidevtools/swagger-parser) for that.
+This package performs structural and semantic validation by executing the validators from the [swagger-editor](https://www.npmjs.com/package/swagger-editor) package.
 
 ### Validation Examples
 
 #### Structural
 
-NOTE: This package does not perform structural validation; use [swagger-parser](https://www.npmjs.com/package/@apidevtools/swagger-parser) for that.
-
-* should have required property 'X'
-* should NOT have additional properties
+* should always have a 'X'
+* Object includes not allowed fields
 * etc.
 
 #### Semantic
@@ -39,33 +28,30 @@ NOTE: This package does not perform structural validation; use [swagger-parser](
 
 ## Usage
 
-This package should be used alongside [swagger-parser](https://www.npmjs.com/package/@apidevtools/swagger-parser), which provides structural validation:
-
 ```js
-const SwaggerParser = require('@apidevtools/swagger-parser')
-const { validateOpenapiSemantics } = require('openapi-semantic-validator')
+const { readFile } = require('fs/promises')
+const { validateOpenapiSpec } = require('openapi-semantic-validator')
 
-// parse and validate structure
-const spec = await SwaggerParser.validate('openapi.yml')
+const spec = await readFile('openapi.yml', 'utf8')
 
-// validate semantics
+// validate structure and semantics
 try {
-  await validateOpenapiSemantics(spec)
-  log('no semantic errors!')
+  await validateOpenapiSpec(spec)
+  log('no structural or semantic errors!')
 } catch (err) {
-  log(`semantic errors: ${JSON.stringify(err.semanticErrors)}`)
+  log(`structural or semantic errors: ${JSON.stringify(err.validationErrors)}`)
 }
 ```
 
 ## API
 
-- `validateOpenapiSemantics(spec)`
+- `validateOpenapiSpec(spec)`
     - Validates an OpenAPI specification
     - Inputs:
-        - `spec`: Parsed OpenAPI specification
+        - `spec`: OpenAPI specification string
     - Returns: `Promise`
-        - If no semantic errors are found, resolves
-        - If semantic errors are found, rejects with an `Error` object containing a `semanticErrors` property;
+        - If no structural or semantic errors are found, resolves
+        - If structural or semantic errors are found, rejects with an `Error` object containing a `validationErrors` property;
           this is an array of objects containing:
             - `level: 'error' | 'warning'`
             - `message: string`
