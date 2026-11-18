@@ -22,18 +22,16 @@
     "test": "eslint '**/*.ts' && yarn build && jest"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.6.2",
-    "@typescript-eslint/eslint-plugin": "^8.60.0",
-    "@typescript-eslint/parser": "^8.60.0",
     "eslint": "^10.4.0",
     "fs-extra": "^11.1.0",
     "jest": "^30.0.2",
     "swagger-editor-npm": "exec:./scripts/fetch-swagger-editor.js",
     "ts-jest": "^29.1.1",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.72.2"
   },
   "dependenciesMeta": {
     "swagger-editor-npm": {
